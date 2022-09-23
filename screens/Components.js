@@ -359,7 +359,7 @@ class Components extends React.Component {
         </Text>
         <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
           <Block style={styles.rows}>
-            <TouchableOpacity onPress={() => navigation.navigate('Pro')}>
+            <TouchableOpacity onPress={() => navigation.navigate('History')}>
               <Block row middle space="between" style={{ paddingTop: 7 }}>
                 <Text
                   style={{ fontFamily: 'montserrat-regular' }}

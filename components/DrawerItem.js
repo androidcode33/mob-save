@@ -20,17 +20,8 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Components':
-        return (
-          <Icon
-            name="atom2x"
-            family="NowExtra"
-            size={18}
-            color={focused ? nowTheme.COLORS.PRIMARY : 'black'}
-            style={{ opacity: 0.5 }}
-          />
-        );
-      case 'Articles':
+    
+      case 'History':
         return (
           <Icon
             name="paper"
@@ -40,7 +31,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Profile':
+      case 'Withdraw':
         return (
           <Icon
             name="profile-circle"
@@ -50,7 +41,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Account':
+      case 'Save':
         return (
           <Icon
             name="badge2x"
@@ -60,35 +51,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Settings':
-        return (
-          <Icon
-            name="settings-gear-642x"
-            family="NowExtra"
-            size={18}
-            color={focused ? nowTheme.COLORS.PRIMARY : 'black'}
-            style={{ opacity: 0.5 }}
-          />
-        );
-      case 'Examples':
-        return (
-          <Icon
-            name="album"
-            family="NowExtra"
-            size={14}
-            color={focused ? nowTheme.COLORS.PRIMARY : 'black'}
-          />
-        );
-      case 'GETTING STARTED':
-        return (
-          <Icon
-            name="spaceship2x"
-            family="NowExtra"
-            size={18}
-            style={{ borderColor: 'rgba(0,0,0,0.5)', opacity: 0.5 }}
-            color={focused ? nowTheme.COLORS.PRIMARY : 'black'}
-          />
-        );
+     
       case 'LOGOUT':
         return (
           <Icon

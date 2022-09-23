@@ -15,7 +15,7 @@ const iPhoneX = () =>
 const BellButton = ({ isWhite, style, navigation }) => (
   <TouchableOpacity
     style={[styles.button, style]}
-    onPress={() => navigation.navigate('Pro')}
+    onPress={() => navigation.navigate('History')}
   >
     <Icon
       family="NowExtra"
@@ -28,7 +28,7 @@ const BellButton = ({ isWhite, style, navigation }) => (
 );
 
 const BasketButton = ({ isWhite, style, navigation }) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
+  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('History')}>
     <Icon
       family="NowExtra"
       size={16}
@@ -37,8 +37,6 @@ const BasketButton = ({ isWhite, style, navigation }) => (
     />
   </TouchableOpacity>
 );
-
-
 
 class Header extends React.Component {
   handleLeftPress = () => {
@@ -72,17 +70,17 @@ class Header extends React.Component {
           <BellButton key="chat-categories" navigation={navigation} isWhite={white} />,
           <BasketButton key="basket-categories" navigation={navigation} isWhite={white} />
         ];
-      case 'Category':
+      case 'History':
         return [
           <BellButton key="chat-deals" navigation={navigation} isWhite={white} />,
           <BasketButton key="basket-deals" navigation={navigation} isWhite={white} />
         ];
-      case 'Profile':
+      case 'Withdraw':
         return [
           <BellButton key="chat-profile" navigation={navigation} isWhite={white} />,
           <BasketButton key="basket-deals" navigation={navigation} isWhite={white} />
         ];
-      case 'Account':
+      case 'Save':
         return [
           <BellButton key="chat-profile" navigation={navigation} />,
           <BasketButton key="basket-deals" navigation={navigation} />
@@ -120,7 +118,7 @@ class Header extends React.Component {
               fontSize: 16
             }}
           >
-            Good morning, Muhwezi Jerald
+            Good morning, Opio David
           </Text>
 
           <Text
@@ -148,7 +146,7 @@ class Header extends React.Component {
         <Button
           shadowless
           style={[styles.tab, styles.divider]}
-          onPress={() => console.log(navigation.navigate('Pro'))}
+          onPress={() => console.log(navigation.navigate('Save'))}
         >
           <Block row middle>
             <Icon
@@ -163,7 +161,7 @@ class Header extends React.Component {
             </Text>
           </Block>
         </Button>
-        <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
+        <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Withdraw')}>
           <Block row middle>
             <Icon
               size={18}
@@ -220,7 +218,7 @@ class Header extends React.Component {
       ...props
     } = this.props;
 
-    const noShadow = ['Search', 'Categories', 'Deals', 'Pro', 'Profile'].includes(title);
+    const noShadow = ['Search', 'Categories', 'Deals', 'History', 'Profile'].includes(title);
     const headerStyles = [
       !noShadow ? styles.shadow : null,
       transparent ? { backgroundColor: 'rgba(0,0,0,0)' } : null

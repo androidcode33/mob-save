@@ -9,16 +9,62 @@ import { Card, Button } from "../components";
 import articles from "../constants/articles";
 import { color } from "react-native-reanimated";
 const { width } = Dimensions.get("screen");
+import { TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 class Home extends React.Component {
+  state = {
+    data: []
+  };
+
+  _storeData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('data');
+      if (value.length < 1) {
+            await AsyncStorage.setItem(
+                'data',
+                JSON.stringify([{amount:90000,date:'5th may 2022'}])
+              );
+              const value = await AsyncStorage.getItem('data');
+
+              this.setState({ data: [{amount:90000,date:'5th may 2022'}] });
+        }else{
+          this.setState({ data: JSON.parse(value) });
+        }
+    } catch (error) {
+      // Error saving data
+    }
+  };
+
+  async componentDidMount() {
+    this._storeData();
+    // Font.loadAsync({
+    //   'montserrat-regular': require('./assets/font/Montserrat-Regular.ttf'),
+    //   'montserrat-bold': require('./assets/font/Montserrat-Bold.ttf')
+    // });
+
+    // this.setState({ fontLoaded: true });
+
+    // try {
+    //   const value = await AsyncStorage.getItem('data');
+    //   this.console.log(value);
+    //   if(value !== null) {
+    //     this.setState({ data: JSON.parse(value) });
+    //   }
+    // } catch(e) {
+    //   // error reading value
+    // }
+  }
+
   renderArticles = () => {
+    const { navigation } = this.props;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}
       >
         <Block flex>
-
           <Block>
             <Block middle >
               <Text
@@ -42,7 +88,7 @@ class Home extends React.Component {
                   opacity: .8
                 }}
               >
-                900,000
+                UGX 110,000
               </Text>
             </Block>
           </Block>
@@ -72,7 +118,10 @@ class Home extends React.Component {
                 Next saving date
               </Text>
             </Block>
-            <Block>
+            {console.log(this.state.data)}
+            {this.state.data.map((item, index) => {
+            return (
+              <Block>
               <Block row middle space="between" style={{ marginBottom: theme.SIZES.BASE }}>
                 <Text
                   style={{ fontFamily: 'montserrat-regular' }}
@@ -86,11 +135,14 @@ class Home extends React.Component {
                   size={14}
                   color={nowTheme.COLORS.TEXT}
                 >
-                  UGX 100,000
+                  UGX 10,000
                 </Text>
                 <Icon name="md-checkmark-circle" family="Galio" size={20} color="grey" />
               </Block>
             </Block>
+            );
+          })}
+           
 
             <View
               style={{
@@ -135,7 +187,7 @@ class Home extends React.Component {
                 size={14}
                 color={nowTheme.COLORS.TEXT}
               >
-                UGX 179,000
+                UGX 10,000
               </Text>
               <Icon name="md-checkmark-circle" family="Galio" size={20} color="green" />
             </Block>
@@ -159,7 +211,7 @@ class Home extends React.Component {
                 size={14}
                 color={nowTheme.COLORS.TEXT}
               >
-                UGX 157,000
+                UGX 10,000
               </Text>
               <Icon name="md-checkmark-circle" family="Galio" size={20} color="green" />
             </Block>
@@ -185,7 +237,7 @@ class Home extends React.Component {
                 size={14}
                 color={nowTheme.COLORS.TEXT}
               >
-                UGX 100,000
+                UGX 10,000
               </Text>
               <Icon name="md-checkmark-circle" family="Galio" size={20} color="green" />
             </Block>
@@ -211,7 +263,7 @@ class Home extends React.Component {
                 size={14}
                 color={nowTheme.COLORS.TEXT}
               >
-                UGX 230,000
+                UGX 10,000
               </Text>
               <Icon name="md-checkmark-circle" family="Galio" size={20} color="green" />
             </Block>
@@ -224,17 +276,22 @@ class Home extends React.Component {
               }}
             />
             <Block middle >
-              <Text
-                style={{
-                  marginTop: 0,
-                  marginBottom: theme.SIZES.BASE / 2,
-                  fontSize: 20,
-                  color: 'orange',
-                  fontFamily: 'montserrat-regular',
-                }}
+              <TouchableOpacity
+                onPress={() => navigation.navigate('History')}
               >
-                View more
-              </Text>
+                <Text
+                  style={{
+                    marginTop: 0,
+                    marginBottom: theme.SIZES.BASE / 2,
+                    fontSize: 20,
+                    color: 'orange',
+                    fontFamily: 'montserrat-regular',
+                  }}
+                >
+                  View more
+                </Text>
+              </TouchableOpacity>
+
             </Block>
 
           </Block>

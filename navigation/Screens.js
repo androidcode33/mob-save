@@ -11,10 +11,10 @@ import CustomDrawerContent from './Menu';
 // screens
 import Home from '../screens/Home';
 import Onboarding from '../screens/Onboarding';
-import Pro from '../screens/Pro';
-import Profile from '../screens/Profile';
+import History from '../screens/History';
+import Withdraw from '../screens/Withdrawal';
 import React from 'react';
-import Register from '../screens/Register';
+import Save from '../screens/Save';
 import SettingsScreen from '../screens/Settings';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -74,20 +74,20 @@ function ArticlesStack(props) {
 function AccountStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="Account"
+      initialRouteName="Save"
       screenOptions={{
         mode: 'card',
         headerShown: 'screen',
       }}
     >
       <Stack.Screen
-        name="Account"
-        component={Register}
+        name="Save"
+        component={Save}
         options={{
           header: ({ navigation, scene }) => (
-            <Header transparent title="Create Account" navigation={navigation} scene={scene} />
+            <Header back title="Add Savings" navigation={navigation} scene={scene} />
           ),
-          headerTransparent: true,
+          headerTransparent: false,
         }}
       />
     </Stack.Navigator>
@@ -97,31 +97,31 @@ function AccountStack(props) {
 function ProfileStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Withdraw"
       screenOptions={{
         mode: 'card',
         headerShown: 'screen',
       }}
     >
       <Stack.Screen
-        name="Profile"
-        component={Profile}
+        name="Withdraw"
+        component={Withdraw}
         options={{
           header: ({ navigation, scene }) => (
-            <Header transparent white title="Profile" navigation={navigation} scene={scene} />
+            <Header back title="Withdraw Savings" navigation={navigation} scene={scene} />
           ),
-          cardStyle: { backgroundColor: '#FFFFFF' },
-          headerTransparent: true,
+        
+          headerTransparent: false,
         }}
       />
       <Stack.Screen
-        name="Pro"
-        component={Pro}
+        name="History"
+        component={History}
         options={{
           header: ({ navigation, scene }) => (
-            <Header title="" back white transparent navigation={navigation} scene={scene} />
+            <Header title="Savings History" back navigation={navigation} scene={scene} />
           ),
-          headerTransparent: true,
+          headerTransparent: false,
         }}
       />
     </Stack.Navigator>
@@ -147,13 +147,13 @@ function HomeStack(props) {
         }}
       />
       <Stack.Screen
-        name="Pro"
-        component={Pro}
+        name="History"
+        component={History}
         options={{
           header: ({ navigation, scene }) => (
-            <Header title="" back white transparent navigation={navigation} scene={scene} />
+            <Header title="Savings History" back navigation={navigation} scene={scene} />
           ),
-          headerTransparent: true,
+          headerTransparent: false,
         }}
       />
     </Stack.Navigator>
@@ -213,14 +213,14 @@ function AppStack(props) {
         }}
       />
       <Drawer.Screen
-        name="Profile"
+        name="Withdraw"
         component={ProfileStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Account"
+        name="Save"
         component={AccountStack}
         options={{
           headerShown: false,

@@ -7,10 +7,12 @@ import { Images, nowTheme } from '../constants/';
 import { HeaderHeight } from '../constants/utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
+import  {Input}  from  '../components/';
 
 export default class Onboarding extends React.Component {
   render() {
     const { navigation } = this.props;
+
     return (
       <Block flex style={styles.container}>
         <StatusBar barStyle="light-content" />
@@ -66,80 +68,18 @@ export default class Onboarding extends React.Component {
                 shadowRadius: 3,
               }}>
                 
-                <Block flex row>
-                  <Text
-                    size={16}
-                    style={{
-                      marginTop: 5,
+                <Block flex row 
+                style={{
+                      marginTop: 15,
                       marginBottom: 20,
                       lineHeight: 20,
-                      fontSize: 14,
-                      opacity: .8,
-                      fontFamily: 'montserrat-regular',
-                    }}
-                  >
-                    Previous savings
-                  </Text>
-                </Block>
+                    }}></Block>
 
-                <View
-                  style={{
-                    borderBottomColor: 'grey',
-                    borderBottomWidth: StyleSheet.hairlineWidth,
-                    marginBottom: 10
-                  }}
-                />
-                <Block row middle space="between" style={{ marginBottom: theme.SIZES.BASE }}>
-                  <Text
-                    style={{ fontFamily: 'montserrat-regular' }}
-                    size={14}
-                    color={nowTheme.COLORS.TEXT}
-                  >
-                    Wed, 5th Sept 2022
-                  </Text>
-                  <Text
-                    style={{ fontFamily: 'montserrat-regular' }}
-                    size={14}
-                    color={nowTheme.COLORS.TEXT}
-                  >
-                    UGX 179,000
-                  </Text>
-                  <Icon name="md-checkmark-circle" family="Galio" size={20} color="green" />
-                </Block>
-                <View
-                  style={{
-                    borderBottomColor: 'grey',
-                    borderBottomWidth: StyleSheet.hairlineWidth,
-                    marginBottom: 10
-                  }}
-                />
-                <Block row middle space="between" style={{ marginBottom: theme.SIZES.BASE }}>
-                  <Text
-                    style={{ fontFamily: 'montserrat-regular' }}
-                    size={14}
-                    color={nowTheme.COLORS.TEXT}
-                  >
-                    Fri, 5th Aug 2022
-                  </Text>
-                  <Text
-                    style={{ fontFamily: 'montserrat-regular' }}
-                    size={14}
-                    color={nowTheme.COLORS.TEXT}
-                  >
-                    UGX 157,000
-                  </Text>
-                  <Icon name="md-checkmark-circle" family="Galio" size={20} color="green" />
-                </Block>
-
+                  <Input succcess={true} placeholder={'Enter your PIN'} />
           
-                <View
-                  style={{
-                    borderBottomColor: 'grey',
-                    borderBottomWidth: StyleSheet.hairlineWidth,
-                    marginBottom: 10
-                  }}
-                />
-                <Block middle >
+                <Block middle style={{
+                      marginTop: 15
+                    }}>
                   <Button
                     shadowless
                     style={styles.button}
@@ -150,9 +90,21 @@ export default class Onboarding extends React.Component {
                       style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
                       color={theme.COLORS.WHITE}
                     >
-                      GET STARTED
+                      Continue
                     </Text>
                   </Button>
+                  <Text
+                    size={16}
+                    style={{
+                      marginTop: 15,
+                      marginBottom: 20,
+                      fontSize: 16,
+                      opacity: .8,
+                      fontFamily: 'montserrat-regular',
+                    }}
+                  >
+                    Forgot PIN
+                  </Text>
                 </Block>
 
               </Block>
